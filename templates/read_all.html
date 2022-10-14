@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Read All</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>All Users</h1>
+        <table class="table table-hover text-center">
+            <thead class="bg-secondary">
+                <tr>
+                    <th hidden>ID</th>
+                    <th class="text-warning">First Name</th>
+                    <th class="text-warning">Last Name</th>
+                    <th class="text-warning">Email</th>
+                    <th class="text-warning">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td hidden>{{ user.id }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><a href="/user/{{ user.id }}">Show</a> | <a href="/edit/{{ user.id }}">Edit</a> | <a href="/user/perm/delete/{{ user.id }}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/new">Add New User</a>
+    </div>
+</body>
+
+</html>
